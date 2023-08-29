@@ -645,7 +645,9 @@ func (c *benchCmd) runPublisher(bm *bench.Benchmark, nc *nats.Conn, startwg *syn
 
 	var msg []byte
 	if c.msgSize > 0 {
-		msg = make([]byte, c.msgSize)
+		msgStr := `{"user_id":10,"name":"Ganesh","balance":5000}`
+		msg = []byte(msgStr)
+		//msg = make([]byte, c.msgSize)
 	}
 
 	<-trigger
